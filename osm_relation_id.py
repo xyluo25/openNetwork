@@ -21,7 +21,7 @@ class OSM_RelationID_Finder:
     def __init__(self):
 
         # the default path to save/load the global relation id
-        self.path_osm_relation_id = self.path2linux(os.path.join(
+        self.path_osm_relation_id = self._path2linux(os.path.join(
             Path(__file__).resolve().parent, "datasets/g_osm_relation_id.json"))
 
         # load the global relation id
@@ -55,7 +55,7 @@ class OSM_RelationID_Finder:
         """
         return list(self.g_osm_relation_id.keys())
 
-    def read_country_rid(self, path_country_city: str) -> dict:
+    def _read_country_rid(self, path_country_city: str) -> dict:
         """A function to read cities relation id from a csv file
 
         Args:
@@ -96,7 +96,7 @@ class OSM_RelationID_Finder:
         print(f"the country {country_name} is read.")
         return {country_name.lower(): country_rid_dict}
 
-    def update_country(self, path_country: str) -> None:
+    def update_osm_relation_id_by_country(self, path_country: str) -> None:
         """A function to update the relation id of a country in g_osm_relation_id
 
         Args:
@@ -108,7 +108,7 @@ class OSM_RelationID_Finder:
             >>> finder.update_country("datasets/country_city_relation_id.csv")
             "the country XX is updated."
         """
-        country_dict = self.read_country_rid(path_country)
+        country_dict = self._read_country_rid(path_country)
         self.g_osm_relation_id = {**self.g_osm_relation_id, **country_dict}
         self._dict2json(self.g_osm_relation_id, self.path_osm_relation_id)
         print(f"the country {country_dict.keys()} is updated.")
@@ -124,7 +124,7 @@ class OSM_RelationID_Finder:
             json.dump(data, f, indent=4)
 
     # convert OS path to standard linux path
-    def path2linux(self, path: Union[str, Path]) -> str:
+    def _path2linux(self, path: Union[str, Path]) -> str:
         """Convert a path to a linux path, linux path can run in windows, linux and mac"""
         try:
             return path.replace("\\", "/")
