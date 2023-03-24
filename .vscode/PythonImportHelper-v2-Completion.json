@@ -1,0 +1,218 @@
+[
+    {
+        "label": "pandas",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pandas",
+        "description": "pandas",
+        "detail": "pandas",
+        "documentation": {}
+    },
+    {
+        "label": "numpy",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "numpy",
+        "description": "numpy",
+        "detail": "numpy",
+        "documentation": {}
+    },
+    {
+        "label": "json",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "json",
+        "description": "json",
+        "detail": "json",
+        "documentation": {}
+    },
+    {
+        "label": "osm_relation_id_finder",
+        "kind": 2,
+        "importPath": "global_country_state_city",
+        "description": "global_country_state_city",
+        "peekOfCode": "def osm_relation_id_finder(city: str,\n                           country: str = \"us\",\n                           state: str = \"az\",\n                           print_all_available: bool = False) -> list:\n    \"\"\"A function tool to find the osm relation id of a city globally\n    Args:\n        city (str): the city name or first several letters of the city name\n        country (str): the country name or country code\n        state (str): the state name or state code\n        print_all_available (bool, optional): print out all match results, if False, will display top 5 matches. Defaults to False.",
+        "detail": "global_country_state_city",
+        "documentation": {}
+    },
+    {
+        "label": "path_global_city",
+        "kind": 5,
+        "importPath": "global_country_state_city",
+        "description": "global_country_state_city",
+        "peekOfCode": "path_global_city = r\"C:\\Users\\roche\\Anaconda_workspace\\001_Github\\openNetwork\\docs\\global_cities1.csv\"\n# initialize an empty dictionary to store the global city name and its osm id\nglobal_osm_relation_id = {}\n# read the global city data\ndf_global = pd.read_csv(path_global_city)\n# create two dictionaries to store the global country name and code\nglobal_country_name_dict = {j: i for i, j in enumerate(\n    df_global['country_name'].unique().tolist())}\nglobal_country_code_dict = {i[0]: i[1] for i in df_global[['country_code', 'country_name']].drop_duplicates().values}\n# prepare each country value",
+        "detail": "global_country_state_city",
+        "documentation": {}
+    },
+    {
+        "label": "global_osm_relation_id",
+        "kind": 5,
+        "importPath": "global_country_state_city",
+        "description": "global_country_state_city",
+        "peekOfCode": "global_osm_relation_id = {}\n# read the global city data\ndf_global = pd.read_csv(path_global_city)\n# create two dictionaries to store the global country name and code\nglobal_country_name_dict = {j: i for i, j in enumerate(\n    df_global['country_name'].unique().tolist())}\nglobal_country_code_dict = {i[0]: i[1] for i in df_global[['country_code', 'country_name']].drop_duplicates().values}\n# prepare each country value\nfor country in global_country_name_dict:\n    df_country_single = df_global[df_global['country_name'] == country]",
+        "detail": "global_country_state_city",
+        "documentation": {}
+    },
+    {
+        "label": "df_global",
+        "kind": 5,
+        "importPath": "global_country_state_city",
+        "description": "global_country_state_city",
+        "peekOfCode": "df_global = pd.read_csv(path_global_city)\n# create two dictionaries to store the global country name and code\nglobal_country_name_dict = {j: i for i, j in enumerate(\n    df_global['country_name'].unique().tolist())}\nglobal_country_code_dict = {i[0]: i[1] for i in df_global[['country_code', 'country_name']].drop_duplicates().values}\n# prepare each country value\nfor country in global_country_name_dict:\n    df_country_single = df_global[df_global['country_name'] == country]\n    # create two dictionaries to store the country state name and code\n    country_state_name_dict = {j: i for i, j in enumerate(",
+        "detail": "global_country_state_city",
+        "documentation": {}
+    },
+    {
+        "label": "global_country_name_dict",
+        "kind": 5,
+        "importPath": "global_country_state_city",
+        "description": "global_country_state_city",
+        "peekOfCode": "global_country_name_dict = {j: i for i, j in enumerate(\n    df_global['country_name'].unique().tolist())}\nglobal_country_code_dict = {i[0]: i[1] for i in df_global[['country_code', 'country_name']].drop_duplicates().values}\n# prepare each country value\nfor country in global_country_name_dict:\n    df_country_single = df_global[df_global['country_name'] == country]\n    # create two dictionaries to store the country state name and code\n    country_state_name_dict = {j: i for i, j in enumerate(\n        df_country_single['state_name'].unique().tolist())}\n    country_state_code_dict = {j: i for i, j in enumerate(",
+        "detail": "global_country_state_city",
+        "documentation": {}
+    },
+    {
+        "label": "global_country_code_dict",
+        "kind": 5,
+        "importPath": "global_country_state_city",
+        "description": "global_country_state_city",
+        "peekOfCode": "global_country_code_dict = {i[0]: i[1] for i in df_global[['country_code', 'country_name']].drop_duplicates().values}\n# prepare each country value\nfor country in global_country_name_dict:\n    df_country_single = df_global[df_global['country_name'] == country]\n    # create two dictionaries to store the country state name and code\n    country_state_name_dict = {j: i for i, j in enumerate(\n        df_country_single['state_name'].unique().tolist())}\n    country_state_code_dict = {j: i for i, j in enumerate(\n        df_country_single['state_code'].unique().tolist())}\n    # prepare each state value",
+        "detail": "global_country_state_city",
+        "documentation": {}
+    },
+    {
+        "label": "global_country_name_dict",
+        "kind": 5,
+        "importPath": "global_country_state_city",
+        "description": "global_country_state_city",
+        "peekOfCode": "global_country_name_dict = eval(repr(global_country_name_dict).lower())\nglobal_country_code_dict.pop(np.nan)\nglobal_country_code_dict[\"NA\"] = 'Namibia'\nglobal_country_code_dict = eval(repr(global_country_code_dict).lower())\ndef osm_relation_id_finder(city: str,\n                           country: str = \"us\",\n                           state: str = \"az\",\n                           print_all_available: bool = False) -> list:\n    \"\"\"A function tool to find the osm relation id of a city globally\n    Args:",
+        "detail": "global_country_state_city",
+        "documentation": {}
+    },
+    {
+        "label": "global_country_code_dict[\"NA\"]",
+        "kind": 5,
+        "importPath": "global_country_state_city",
+        "description": "global_country_state_city",
+        "peekOfCode": "global_country_code_dict[\"NA\"] = 'Namibia'\nglobal_country_code_dict = eval(repr(global_country_code_dict).lower())\ndef osm_relation_id_finder(city: str,\n                           country: str = \"us\",\n                           state: str = \"az\",\n                           print_all_available: bool = False) -> list:\n    \"\"\"A function tool to find the osm relation id of a city globally\n    Args:\n        city (str): the city name or first several letters of the city name\n        country (str): the country name or country code",
+        "detail": "global_country_state_city",
+        "documentation": {}
+    },
+    {
+        "label": "global_country_code_dict",
+        "kind": 5,
+        "importPath": "global_country_state_city",
+        "description": "global_country_state_city",
+        "peekOfCode": "global_country_code_dict = eval(repr(global_country_code_dict).lower())\ndef osm_relation_id_finder(city: str,\n                           country: str = \"us\",\n                           state: str = \"az\",\n                           print_all_available: bool = False) -> list:\n    \"\"\"A function tool to find the osm relation id of a city globally\n    Args:\n        city (str): the city name or first several letters of the city name\n        country (str): the country name or country code\n        state (str): the state name or state code",
+        "detail": "global_country_state_city",
+        "documentation": {}
+    },
+    {
+        "label": "path_relation_id",
+        "kind": 5,
+        "importPath": "osm_relation_id",
+        "description": "osm_relation_id",
+        "peekOfCode": "path_relation_id = \"./datasets/osm_relation_id.json\"\npath_country_state_abbreviation_name = \"./datasets/osm_country_state_abbreviation_name.json\"\npath_us_cities = \"./docs/us_cities.csv\"\n# read csv file\ndf_data = pd.read_csv(path_us_cities, encoding='utf-8')\n# create an empty list to store relation id for each city each country in the world\nosm_relation_id_dict = {}\ncountry_name = \"us\"\n# lower case all state names\nname_of_states = [state.lower() for state in df_data[\"state\"].unique().tolist()]",
+        "detail": "osm_relation_id",
+        "documentation": {}
+    },
+    {
+        "label": "path_country_state_abbreviation_name",
+        "kind": 5,
+        "importPath": "osm_relation_id",
+        "description": "osm_relation_id",
+        "peekOfCode": "path_country_state_abbreviation_name = \"./datasets/osm_country_state_abbreviation_name.json\"\npath_us_cities = \"./docs/us_cities.csv\"\n# read csv file\ndf_data = pd.read_csv(path_us_cities, encoding='utf-8')\n# create an empty list to store relation id for each city each country in the world\nosm_relation_id_dict = {}\ncountry_name = \"us\"\n# lower case all state names\nname_of_states = [state.lower() for state in df_data[\"state\"].unique().tolist()]\nname_of_states_abbr = df_data[\"state_\"].unique().tolist()",
+        "detail": "osm_relation_id",
+        "documentation": {}
+    },
+    {
+        "label": "path_us_cities",
+        "kind": 5,
+        "importPath": "osm_relation_id",
+        "description": "osm_relation_id",
+        "peekOfCode": "path_us_cities = \"./docs/us_cities.csv\"\n# read csv file\ndf_data = pd.read_csv(path_us_cities, encoding='utf-8')\n# create an empty list to store relation id for each city each country in the world\nosm_relation_id_dict = {}\ncountry_name = \"us\"\n# lower case all state names\nname_of_states = [state.lower() for state in df_data[\"state\"].unique().tolist()]\nname_of_states_abbr = df_data[\"state_\"].unique().tolist()\nrelation_id_state = df_data[\"relation_id_state\"].unique().tolist()",
+        "detail": "osm_relation_id",
+        "documentation": {}
+    },
+    {
+        "label": "df_data",
+        "kind": 5,
+        "importPath": "osm_relation_id",
+        "description": "osm_relation_id",
+        "peekOfCode": "df_data = pd.read_csv(path_us_cities, encoding='utf-8')\n# create an empty list to store relation id for each city each country in the world\nosm_relation_id_dict = {}\ncountry_name = \"us\"\n# lower case all state names\nname_of_states = [state.lower() for state in df_data[\"state\"].unique().tolist()]\nname_of_states_abbr = df_data[\"state_\"].unique().tolist()\nrelation_id_state = df_data[\"relation_id_state\"].unique().tolist()\nstate_name_abbreviation_to_origin = dict(zip(name_of_states_abbr, name_of_states))\n# create a key to store county name and its relation id",
+        "detail": "osm_relation_id",
+        "documentation": {}
+    },
+    {
+        "label": "osm_relation_id_dict",
+        "kind": 5,
+        "importPath": "osm_relation_id",
+        "description": "osm_relation_id",
+        "peekOfCode": "osm_relation_id_dict = {}\ncountry_name = \"us\"\n# lower case all state names\nname_of_states = [state.lower() for state in df_data[\"state\"].unique().tolist()]\nname_of_states_abbr = df_data[\"state_\"].unique().tolist()\nrelation_id_state = df_data[\"relation_id_state\"].unique().tolist()\nstate_name_abbreviation_to_origin = dict(zip(name_of_states_abbr, name_of_states))\n# create a key to store county name and its relation id\nosm_relation_id_dict[country_name] = {}\nrelation_id = {",
+        "detail": "osm_relation_id",
+        "documentation": {}
+    },
+    {
+        "label": "country_name",
+        "kind": 5,
+        "importPath": "osm_relation_id",
+        "description": "osm_relation_id",
+        "peekOfCode": "country_name = \"us\"\n# lower case all state names\nname_of_states = [state.lower() for state in df_data[\"state\"].unique().tolist()]\nname_of_states_abbr = df_data[\"state_\"].unique().tolist()\nrelation_id_state = df_data[\"relation_id_state\"].unique().tolist()\nstate_name_abbreviation_to_origin = dict(zip(name_of_states_abbr, name_of_states))\n# create a key to store county name and its relation id\nosm_relation_id_dict[country_name] = {}\nrelation_id = {\n    df_data.loc[i, \"city_name\"]: df_data.loc[i, \"relation_id_city\"]",
+        "detail": "osm_relation_id",
+        "documentation": {}
+    },
+    {
+        "label": "name_of_states",
+        "kind": 5,
+        "importPath": "osm_relation_id",
+        "description": "osm_relation_id",
+        "peekOfCode": "name_of_states = [state.lower() for state in df_data[\"state\"].unique().tolist()]\nname_of_states_abbr = df_data[\"state_\"].unique().tolist()\nrelation_id_state = df_data[\"relation_id_state\"].unique().tolist()\nstate_name_abbreviation_to_origin = dict(zip(name_of_states_abbr, name_of_states))\n# create a key to store county name and its relation id\nosm_relation_id_dict[country_name] = {}\nrelation_id = {\n    df_data.loc[i, \"city_name\"]: df_data.loc[i, \"relation_id_city\"]\n    for i in range(len(df_data))\n}",
+        "detail": "osm_relation_id",
+        "documentation": {}
+    },
+    {
+        "label": "name_of_states_abbr",
+        "kind": 5,
+        "importPath": "osm_relation_id",
+        "description": "osm_relation_id",
+        "peekOfCode": "name_of_states_abbr = df_data[\"state_\"].unique().tolist()\nrelation_id_state = df_data[\"relation_id_state\"].unique().tolist()\nstate_name_abbreviation_to_origin = dict(zip(name_of_states_abbr, name_of_states))\n# create a key to store county name and its relation id\nosm_relation_id_dict[country_name] = {}\nrelation_id = {\n    df_data.loc[i, \"city_name\"]: df_data.loc[i, \"relation_id_city\"]\n    for i in range(len(df_data))\n}",
+        "detail": "osm_relation_id",
+        "documentation": {}
+    },
+    {
+        "label": "relation_id_state",
+        "kind": 5,
+        "importPath": "osm_relation_id",
+        "description": "osm_relation_id",
+        "peekOfCode": "relation_id_state = df_data[\"relation_id_state\"].unique().tolist()\nstate_name_abbreviation_to_origin = dict(zip(name_of_states_abbr, name_of_states))\n# create a key to store county name and its relation id\nosm_relation_id_dict[country_name] = {}\nrelation_id = {\n    df_data.loc[i, \"city_name\"]: df_data.loc[i, \"relation_id_city\"]\n    for i in range(len(df_data))\n}",
+        "detail": "osm_relation_id",
+        "documentation": {}
+    },
+    {
+        "label": "state_name_abbreviation_to_origin",
+        "kind": 5,
+        "importPath": "osm_relation_id",
+        "description": "osm_relation_id",
+        "peekOfCode": "state_name_abbreviation_to_origin = dict(zip(name_of_states_abbr, name_of_states))\n# create a key to store county name and its relation id\nosm_relation_id_dict[country_name] = {}\nrelation_id = {\n    df_data.loc[i, \"city_name\"]: df_data.loc[i, \"relation_id_city\"]\n    for i in range(len(df_data))\n}",
+        "detail": "osm_relation_id",
+        "documentation": {}
+    },
+    {
+        "label": "osm_relation_id_dict[country_name]",
+        "kind": 5,
+        "importPath": "osm_relation_id",
+        "description": "osm_relation_id",
+        "peekOfCode": "osm_relation_id_dict[country_name] = {}\nrelation_id = {\n    df_data.loc[i, \"city_name\"]: df_data.loc[i, \"relation_id_city\"]\n    for i in range(len(df_data))\n}",
+        "detail": "osm_relation_id",
+        "documentation": {}
+    },
+    {
+        "label": "relation_id",
+        "kind": 5,
+        "importPath": "osm_relation_id",
+        "description": "osm_relation_id",
+        "peekOfCode": "relation_id = {\n    df_data.loc[i, \"city_name\"]: df_data.loc[i, \"relation_id_city\"]\n    for i in range(len(df_data))\n}",
+        "detail": "osm_relation_id",
+        "documentation": {}
+    }
+]
